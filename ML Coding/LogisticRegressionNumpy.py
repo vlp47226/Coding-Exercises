@@ -16,7 +16,6 @@ def gradient(theta, X, y): #Calculating the gradient
     return grad
 
 def gradient_descent(theta, X, y, lr, iters): #Gradient Descent Optimization based on number of iterations and learning rate
-    m = len(y)
     loss_history = np.zeros(iters)
     print("Training the Logstic Regression Model...")
     for i in range(iters):
