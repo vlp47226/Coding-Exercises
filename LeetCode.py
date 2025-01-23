@@ -9,14 +9,14 @@ def twoSum(nums, target):
     :type target: int
     :rtype: List[int]
     """
-    data = {}
+    data = {} #Init Dictionary to store the data
     for i,num in enumerate(nums):
-        diff = target - num
-        if diff in data:
-            return [data[diff], i]
+        diff = target - num #Calculate the different between the target and the current number
+        if diff in data: #If the difference is in the dictionary, return the index of the difference and the current index
+            return [data[diff], i] #This works because a + b = y and y - a = b and y - b = a are the same
         else:
-            data[num] = i
-    return []
+            data[num] = i #If the difference is not in the dictionary, add the current number to the dictionary
+    return [] #If no solution is found, return an empty list
 
 # if __name__ == '__main__':
 #     data = [2, 7, 11, 15]
@@ -32,14 +32,14 @@ def twoSum(nums, target):
 #Example Output: 3
 
 def findBuildings(heights: list[int]) -> list[int]:
-    max = 0
-    result = []
-    for i in range(len(heights) -1, -1, -1):
-        height = heights[i]
-        if max < height:
+    max = 0 
+    result = [] #Init result list
+    for i in range(len(heights) -1, -1, -1): #Traverse the list of heights backwards (right to left)
+        height = heights[i] #get the height of the current building
+        if max < height: #If the height of the current building is greater than the max height, add the index to the result list
             result.append(i)
             max = height
-    return result[::-1]
+    return result[::-1]   #Return the result list in reverse order since we traversed the list backwards
 
 # if __name__ == '__main__':
 #     data = [3, 7, 8, 3, 6, 1]
