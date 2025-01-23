@@ -12,10 +12,45 @@ dependencies = [
     "numpy (>=2.2.2,<3.0.0)",
     "matplotlib (>=3.10.0,<4.0.0)",
     "scikit-learn (>=1.6.1,<2.0.0)",
-    "pandas (>=2.2.3,<3.0.0)"
+    "pandas (>=2.2.3,<3.0.0)",
+    "transformers[sentencepiece] (>=4.48.1,<5.0.0)"
 ]
 
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+torch = { version = "^2.2.1", optional = true }
+torchvision = { version="^0.17.1", optional = true }
+
+[tool.poetry.group.cpu]
+optional = true
+
+[tool.poetry.group.cpu.dependencies]
+torch = { version = "^2.2.1", source = "torch_cpu", markers = "extra=='cpu' and extra!='gpu'" }
+torchvision = { version="^0.17.1", source = "torch_cpu", markers = "extra=='cpu' and extra!='gpu'" }
+
+[tool.poetry.group.gpu]
+optional = true
+
+[tool.poetry.group.gpu.dependencies]
+torch = { version = "^2.2.1", source = "torch_cuda", markers = "extra=='gpu' and extra!='cpu'" }
+torchvision = { version="^0.17.1", source = "torch_cuda", markers = "extra=='gpu' and extra!='cpu'" }
+
+
+[tool.poetry.extras]
+cpu = ["torch", "torchvision"]
+gpu = ["torch", "torchvision"]
+
+[[tool.poetry.source]]
+name = "torch_cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[[tool.poetry.source]]
+name = "torch_cuda"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
