@@ -24,8 +24,8 @@ def gradient_descent(theta, X, y, lr, iters): #Gradient Descent Optimization bas
         theta -= lr * grad #Update theta based on the gradient
         loss = loss_function(theta, X, y)
         loss_history[i] = loss #Calculate the loss function based on the updated theta and add it to the loss history
-        print("Iteration: {}, Loss: {}".format(i, loss))
-        time.sleep(1)
+        print("Iteration: {}, Loss: {}".format(i, round(loss[0][0], 4)))
+        time.sleep(0.25)
 
     return theta, loss_history
 
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     theta = np.zeros((X.shape[1], 1)) #Initial theta
 
-    theta, loss_history = gradient_descent(theta, X, y, lr=0.1, iters=1000)
+    theta, loss_history = gradient_descent(theta, X, y, lr=0.1, iters=50)
 
     predictions = predict(theta, X)
 
