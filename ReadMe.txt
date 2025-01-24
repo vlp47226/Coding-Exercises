@@ -1,4 +1,5 @@
-Here I put all my coding exercises that I have done and my interview prep/debrief
+Here I put all my coding exercises that I have done and some of my homeworks from various PhD classes
 
 TODO:
-Add ML and DL hw if I can find it
+Continue to work on LeetCode and ML coding exercises
+--NLP specific exercises
